@@ -50,7 +50,7 @@ $servers | %{
             $Date = $_.EndDate
             <# now iterate through all evaluated objects and get evaluation details #>
             $_ | ?{$_.PolicyName -eq $PolicyName} | Select -ExpandProperty ConnectionEvaluationHistories | Select -ExpandProperty EvaluationDetails | Select * | Select `
-                <# set "columns", these will be returned as PS object #>
+                <# set "columns", these will be returned as PS object #> `
                 @{Name="Evaluated Server";Expression={$_.Parent.ServerInstance}}, `
                 @{Name="Evaluation Date";Expression={$Date}}, `
                 @{Name="Policy Name";Expression={$PolicyName}}, `
